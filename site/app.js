@@ -1,5 +1,7 @@
-/* SDO Practice Lab - static practice app. No dependencies, no network requests.
-   Progress is kept in this browser only (localStorage). */
+/* SDO Practice Lab - static practice app. No dependencies.
+   Personal progress is kept in this browser only (localStorage).
+   If config.js names a Supabase project, each answer is also sent ANONYMOUSLY
+   (question, right/wrong, chosen answer, random run id) for the TA's class statistics. */
 (function () {
   "use strict";
 
@@ -32,9 +34,9 @@
   function loadStore() {
     try {
       var s = JSON.parse(window.localStorage.getItem(STORE_KEY) || "{}");
-      return { stats: s.stats || {}, theme: s.theme || "auto" };
+      return { stats: s.stats || {}, theme: s.theme || "auto", share: s.share !== false };
     } catch (e) {
-      return { stats: {}, theme: "auto" };
+      return { stats: {}, theme: "auto", share: true };
     }
   }
   var store = loadStore();
@@ -116,6 +118,46 @@
     return wrap(q.accept[0]) + more;
   }
 
+  /* ---------- anonymous class statistics (optional) ---------- */
+  var CFG = window.SDO_CONFIG || {};
+  var STATS_URL = CFG.supabaseUrl && CFG.supabaseKey ? String(CFG.supabaseUrl).replace(/\/+$/, "") + "/rest/v1/attempts" : "";
+  function sharing() { return !!STATS_URL && store.share !== false; }
+  function newRunId() {
+    try { if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID(); } catch (e) { /* fall through */ }
+    var h = "";
+    for (var i = 0; i < 32; i++) h += Math.floor(Math.random() * 16).toString(16);
+    return h.slice(0, 8) + "-" + h.slice(8, 12) + "-4" + h.slice(13, 16) + "-a" + h.slice(17, 20) + "-" + h.slice(20);
+  }
+  function serialize(q, resp) {
+    if (!isComplete(q, resp)) return null;
+    if (q.type === "single") return String(resp);
+    if (q.type === "truefalse") return resp ? "true" : "false";
+    if (q.type === "order") return resp.join(",");
+    return norm(resp).slice(0, 60);
+  }
+  function rowFor(it) {
+    return { run_id: run.id, mode: run.mode, question_id: it.q.id, topic: it.q.topic, week: it.q.week, correct: !!it.ok, response: serialize(it.q, it.resp) };
+  }
+  function sendAttempts(rows) {
+    if (!sharing() || !rows.length) return;
+    var headers = { "Content-Type": "application/json", apikey: CFG.supabaseKey, Prefer: "return=minimal" };
+    if (/^eyJ/.test(CFG.supabaseKey)) headers.Authorization = "Bearer " + CFG.supabaseKey; // legacy anon key
+    try {
+      window.fetch(STATS_URL, { method: "POST", headers: headers, body: JSON.stringify(rows), keepalive: true, credentials: "omit" })
+        .catch(function () { /* statistics are best effort; practice works offline */ });
+    } catch (e) { /* ignore */ }
+  }
+  function renderShareNote() {
+    var el = document.getElementById("stats-note");
+    if (!el) return;
+    if (!STATS_URL) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = (store.share !== false
+      ? "<strong>Anonymous class statistics are on.</strong> For each answer the site sends the question, whether it was right, the answer you chose and the time. No name, student ID or device identifier. The TA uses this to see which topics need more practice. "
+      : "<strong>Anonymous class statistics are off</strong> for this browser. Your answers are not sent anywhere. ") +
+      '<button type="button" class="linklike" data-action="share-toggle">' + (store.share !== false ? "Turn off" : "Turn on") + "</button>";
+  }
+
   /* ---------- state ---------- */
   var ui = { screen: "home", tab: "weeks", scope: null, examSize: 20, confirmReset: false };
   var run = null;
@@ -145,7 +187,7 @@
     if (!questions.length) return;
     stopTimer();
     run = {
-      mode: mode, label: label, i: 0, finished: false, timeUp: false, confirm: null,
+      id: newRunId(), mode: mode, label: label, i: 0, finished: false, timeUp: false, confirm: null,
       items: questions.map(makeItem)
     };
     if (mode === "exam") {
@@ -191,13 +233,15 @@
 
   function finishRun() {
     stopTimer();
-    run.items.forEach(function (it) {
-      if (run.mode === "exam") {
+    if (run.mode === "exam" && !run.finished) {
+      run.items.forEach(function (it) {
         it.ok = grade(it.q, it.resp);
         it.checked = true;
         record(it.q.id, it.ok);
-      }
-    });
+      });
+      // unanswered questions (e.g. time ran out) say nothing about difficulty, so they are not sent
+      sendAttempts(run.items.filter(function (it) { return isComplete(it.q, it.resp); }).map(rowFor));
+    }
     if (run.mode !== "exam") {
       run.items = run.items.filter(function (it) { return it.checked; });
     }
@@ -524,6 +568,7 @@
     it.ok = grade(it.q, it.resp);
     record(it.q.id, it.ok);
     saveStore();
+    sendAttempts([rowFor(it)]);
     render(true);
   }
   function next() {
@@ -604,6 +649,7 @@
       case "finish-yes": finishRun(); break;
       case "confirm-no": run.confirm = null; render(false); break;
       case "exit": exitRun(); break;
+      case "share-toggle": store.share = store.share === false; saveStore(); renderShareNote(); break;
       case "leave-yes": goHome(); break;
     }
   });
@@ -648,5 +694,6 @@
   });
 
   applyTheme(true);
+  renderShareNote();
   render(false);
 })();

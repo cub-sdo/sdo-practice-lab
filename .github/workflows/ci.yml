@@ -1,6 +1,6 @@
 # Pipeline for the practice site:
-#   pull request -> validate the question bank (a broken question blocks the merge)
-#   push to main -> validate, build and deploy to GitHub Pages
+#   pull request -> validate the question bank and test the database rules (a failure blocks the merge)
+#   push to main -> the same checks, then build and deploy to GitHub Pages
 name: Validate and deploy
 
 on:
@@ -34,10 +34,36 @@ jobs:
         with:
           path: site
 
+  database:
+    name: Test database rules
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Apply schema.sql to a plain Postgres and check who can read and write what
+        run: >-
+          psql -X -q -v ON_ERROR_STOP=1
+          -f supabase/tests/stubs.sql
+          -f supabase/schema.sql
+          -f supabase/tests/rls_test.sql
+
   deploy:
     name: Deploy to GitHub Pages
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: build
+    needs: [build, database]
     runs-on: ubuntu-latest
     permissions:
       pages: write
