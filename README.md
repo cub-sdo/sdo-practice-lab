@@ -62,7 +62,7 @@ Opening `site/index.html` directly in the browser also works after the build.
 
 ## Deploy (one-time setup)
 
-1. Push this repository to GitHub (e.g. `uhuseynov/sdo-practice-lab`).
+1. Push this repository to GitHub (e.g. `cub-sdo/sdo-practice-lab`).
 2. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. Push to `main`. The workflow validates the questions, builds the site and deploys it.
    The URL appears in the run summary (usually `https://<user>.github.io/sdo-practice-lab/`).
