@@ -5,6 +5,6 @@
      supabaseKey - Project Settings → API Keys → publishable key (sb_publishable_...)
    The publishable key is meant to be public: the database rules only let visitors ADD answers. */
 window.SDO_CONFIG = {
-  supabaseUrl: "",
-  supabaseKey: ""
+  supabaseUrl: "https://kisgjfyqtalcimmaqmkn.supabase.co",
+  supabaseKey: "sb_publishable_delJeq2J2ADEsjYoNa2fsA_OcJedeC5"
 };
