@@ -1,0 +1,466 @@
+{
+  "week": 3,
+  "title": "Terminal & Git fundamentals",
+  "questions": [
+    {
+      "id": "w3-echo-hi-note-txt-adds",
+      "topic": "terminal",
+      "type": "truefalse",
+      "prompt": "`echo \"hi\" > note.txt` adds a line to the end of note.txt and keeps the old content.",
+      "answer": false,
+      "explanation": "> creates/REPLACES the file. >> appends to the end of an existing file.",
+      "source": "Week 3 Tutorial Terminal · Activity 8"
+    },
+    {
+      "id": "w3-pipe-command",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "What does the pipe `|` do in this command?",
+      "options": [
+        "Sends the output of ls as input to grep",
+        "Runs ls and grep independently",
+        "Saves the output to a file",
+        "Comments out the rest of the line"
+      ],
+      "answer": 0,
+      "code": "ls | grep \"\\.txt$\"",
+      "explanation": "A pipe is a conveyor belt: command 1 produces output, command 2 processes it.",
+      "source": "Week 3 Tutorial Terminal · Activity 9"
+    },
+    {
+      "id": "w3-chmod-755-script-sh-gives",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "`chmod 755 script.sh` gives which permissions?",
+      "options": [
+        "rwxrwxrwx",
+        "rw-r--r--",
+        "rwx------",
+        "rwxr-xr-x"
+      ],
+      "answer": 3,
+      "codeOptions": true,
+      "explanation": "7 = rwx (owner), 5 = r-x (group), 5 = r-x (others). Common for scripts.",
+      "source": "Week 2 Lecture 3 · 'chmod'"
+    },
+    {
+      "id": "w3-chmod-value-fits-private-ssh",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which chmod value fits a private SSH key (only the owner can read/write)?",
+      "options": [
+        "644",
+        "600",
+        "755",
+        "777"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "explanation": "600 = rw------- : owner read/write, nobody else has access.",
+      "source": "Week 2 Lecture 3 · 'chmod' examples"
+    },
+    {
+      "id": "w3-output-ls-l-permission-string",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "In the output of `ls -l`, the permission string starts with `d`. What is it?",
+      "options": [
+        "A downloaded file",
+        "A deleted file",
+        "A disabled file",
+        "A directory"
+      ],
+      "answer": 3,
+      "explanation": "First character: d = directory, - = regular file, l = symbolic link.",
+      "source": "Week 2 Lecture 3 · 'Permissions'"
+    },
+    {
+      "id": "w3-flag-lets-mkdir-create-missing",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which flag lets `mkdir` create missing parent folders?",
+      "options": [
+        "-p",
+        "-a",
+        "-r",
+        "-f"
+      ],
+      "answer": 0,
+      "codeOptions": true,
+      "code": "mkdir ?? a/b/c",
+      "explanation": "mkdir -p creates parent directories as needed.",
+      "source": "Week 2 Lecture 3 · 'Options/flags'"
+    },
+    {
+      "id": "w3-powershell-command-matches-ls-on",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which PowerShell command matches `ls` on macOS/Linux?",
+      "options": [
+        "Get-Content",
+        "Get-Location",
+        "Get-ChildItem",
+        "Set-Location"
+      ],
+      "answer": 2,
+      "codeOptions": true,
+      "explanation": "Get-ChildItem = ls, Get-Location = pwd, Set-Location = cd, Get-Content = cat.",
+      "source": "Week 3 Tutorial Terminal · Summary table"
+    },
+    {
+      "id": "w3-get-permission-denied-should-first",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "You get 'Permission denied'. What should you do FIRST?",
+      "options": [
+        "Run it again with sudo",
+        "Reinstall the terminal",
+        "Check that you are in the correct folder",
+        "Delete the file with rm -rf"
+      ],
+      "answer": 2,
+      "explanation": "Tutorial rule: check the folder first - do not jump to sudo/Administrator.",
+      "source": "Week 3 Tutorial Terminal · Recommendations"
+    },
+    {
+      "id": "w3-git-kind-version-control-system",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Git is which kind of version control system?",
+      "options": [
+        "Centralized",
+        "Cloud-only",
+        "Distributed",
+        "Single-user"
+      ],
+      "answer": 2,
+      "explanation": "In a distributed VCS every computer holds a full copy of the version database.",
+      "source": "Week 3 Lecture 1 · 'Centralized vs Distributed VCS'"
+    },
+    {
+      "id": "w3-order-correct-for-change-git",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Which order is correct for a change in Git?",
+      "options": [
+        "Staging area → working dir → remote → local repo",
+        "Remote → working dir → local repo → staging area",
+        "Working dir → staging area → local repo → remote",
+        "Local repo → remote → staging area → working dir"
+      ],
+      "answer": 2,
+      "explanation": "git add: working dir → staging. git commit: staging → local repo. git push: local → remote.",
+      "source": "Week 3 Lecture 1 · 'Development environments'"
+    },
+    {
+      "id": "w3-git-fetch-vs-git-pull",
+      "topic": "git",
+      "type": "single",
+      "prompt": "`git fetch` vs `git pull`: which statement is right?",
+      "options": [
+        "fetch downloads without merging; pull also merges",
+        "They do exactly the same",
+        "fetch uploads; pull downloads",
+        "pull only shows the history"
+      ],
+      "answer": 0,
+      "explanation": "fetch = download updates/history without merging; pull = download AND merge into your branch.",
+      "source": "Week 3 Lecture 1 · 'Git concepts'"
+    },
+    {
+      "id": "w3-merge-conflict-marker-starts-current",
+      "topic": "git",
+      "type": "single",
+      "prompt": "In a merge conflict, which marker starts YOUR current branch's version?",
+      "options": [
+        ">>>>>>> branch-name",
+        "=======",
+        "### CONFLICT ###",
+        "<<<<<<< HEAD"
+      ],
+      "answer": 3,
+      "codeOptions": true,
+      "explanation": "<<<<<<< HEAD starts your side, ======= separates, >>>>>>> branch-name ends the incoming side.",
+      "source": "Week 3 Lecture 1 · 'Merge conflicts'"
+    },
+    {
+      "id": "w3-safely-undo-commit-on-shared",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Safely undo a commit on a SHARED branch without rewriting history:",
+      "options": [
+        "git revert",
+        "git reset --hard",
+        "git push --force",
+        "git stash"
+      ],
+      "answer": 0,
+      "codeOptions": true,
+      "explanation": "revert adds a new commit that undoes the old one; reset rewrites history (only safe locally).",
+      "source": "Week 3 Lecture 1 · 'Undoing changes'"
+    },
+    {
+      "id": "w3-must-switch-branches-urgently-but",
+      "topic": "git",
+      "type": "single",
+      "prompt": "You must switch branches urgently, but your work isn't ready to commit. Use…",
+      "options": [
+        "git stash",
+        "git revert",
+        "git clone",
+        "git reset --hard"
+      ],
+      "answer": 0,
+      "codeOptions": true,
+      "explanation": "git stash temporarily saves uncommitted changes and gives you a clean working directory.",
+      "source": "Week 3 Lecture 1 · 'Stashing changes'"
+    },
+    {
+      "id": "w3-version-v2-1-0-semantic",
+      "topic": "git",
+      "type": "single",
+      "prompt": "In version v2.1.0 (semantic versioning), which number is MINOR?",
+      "options": [
+        "1",
+        "0",
+        "2",
+        "v"
+      ],
+      "answer": 0,
+      "explanation": "MAJOR.MINOR.PATCH → 2 = major, 1 = minor, 0 = patch.",
+      "source": "Week 3 Lecture 1 · 'Tags and Releases'"
+    },
+    {
+      "id": "w3-command-deletes-folder-and-everything",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which command deletes a folder and everything inside it, without asking?",
+      "options": [
+        "rm folder",
+        "mkdir -p folder",
+        "rm -rf folder",
+        "rm -i folder"
+      ],
+      "answer": 2,
+      "codeOptions": true,
+      "explanation": "-r = recursive, -f = force (no prompts). -i asks before each file.",
+      "source": "Week 2 Lecture 3 · 'rm' flags"
+    },
+    {
+      "id": "w3-numeric-mode-same-as",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which numeric mode is the same as this?",
+      "options": [
+        "755",
+        "744",
+        "644",
+        "754"
+      ],
+      "answer": 3,
+      "codeOptions": true,
+      "code": "chmod u=rwx,g=rx,o=r file",
+      "explanation": "owner rwx = 4+2+1 = 7, group r-x = 4+1 = 5, others r-- = 4 → 754.",
+      "source": "Week 2 Lecture 3 · 'More examples for chmod'"
+    },
+    {
+      "id": "w3-ls-la-show-that-ls",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "What does `ls -la` show that `ls -l` doesn't?",
+      "options": [
+        "Owners and groups",
+        "Hidden files (names starting with .)",
+        "Modification dates",
+        "File sizes"
+      ],
+      "answer": 1,
+      "explanation": "-a shows all files including hidden ones; -l is the long format with sizes, owners, dates.",
+      "source": "Week 2 Lecture 3 · 'ls' flags"
+    },
+    {
+      "id": "w3-grep-flag-shows-lines-that",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which `grep` flag shows the lines that do NOT match?",
+      "options": [
+        "-n",
+        "-r",
+        "-v",
+        "-i"
+      ],
+      "answer": 2,
+      "codeOptions": true,
+      "explanation": "-v inverts the match; -i ignores case, -n shows line numbers, -r searches recursively.",
+      "source": "Week 2 Lecture 3 · 'grep' flags"
+    },
+    {
+      "id": "w3-startup-file-runs-once-per",
+      "topic": "terminal",
+      "type": "single",
+      "prompt": "Which startup file runs once per login session?",
+      "options": [
+        ".gitignore",
+        ".bash_profile",
+        "student.txt",
+        ".bashrc"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "explanation": ".bash_profile: once per login (paths). .bashrc: every new tab/window (variables).",
+      "source": "Week 1 Lecture 1 / Week 2 Lecture 3 · 'Terminals'"
+    },
+    {
+      "id": "w3-git-reset-soft-head-1",
+      "topic": "git",
+      "type": "single",
+      "prompt": "What does `git reset --soft HEAD~1` do?",
+      "options": [
+        "Moves the branch back, keeps changes staged",
+        "Pushes the change to the remote",
+        "Deletes the changes permanently",
+        "Creates a new 'undo' commit"
+      ],
+      "answer": 0,
+      "explanation": "soft keeps changes staged, mixed (default) unstages them, hard discards them permanently.",
+      "source": "Week 3 Lecture 1 · 'Undoing changes'"
+    },
+    {
+      "id": "w3-git-reset-safe-on-shared",
+      "topic": "git",
+      "type": "truefalse",
+      "prompt": "`git reset` is safe on shared branches, but `git revert` is not.",
+      "answer": false,
+      "explanation": "The opposite: reset rewrites history (safe only locally); revert adds history (safe for shared branches).",
+      "source": "Week 3 Lecture 1 · 'Undoing changes'"
+    },
+    {
+      "id": "w3-stash-uploaded-remote-when-run",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Is a stash uploaded to the remote when you run `git push`?",
+      "options": [
+        "Only with --all",
+        "Only on the main branch",
+        "No - a stash is local only",
+        "Yes, always"
+      ],
+      "answer": 2,
+      "explanation": "Stash is local only and is never pushed to a remote repository.",
+      "source": "Week 3 Lecture 1 · 'Stashing changes'"
+    },
+    {
+      "id": "w3-kind-git-tag-recommended-for",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Which kind of Git tag is recommended for releases?",
+      "options": [
+        "Annotated tag (author, date, message)",
+        "Lightweight tag",
+        "No tag - use a branch",
+        "Both are identical"
+      ],
+      "answer": 0,
+      "explanation": "Annotated tags store metadata and are recommended for releases.",
+      "source": "Week 3 Lecture 1 · 'Tags and Releases'"
+    },
+    {
+      "id": "w3-current-version-v2-1-0",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Current version v2.1.0. You release only a bug fix. New version?",
+      "options": [
+        "v2.1.0-fix",
+        "v2.1.1",
+        "v3.0.0",
+        "v2.2.0"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "explanation": "PATCH is for bug fixes: MAJOR.MINOR.PATCH → v2.1.1.",
+      "source": "Week 3 Lecture 1 · 'Tags and Releases'"
+    },
+    {
+      "id": "w3-command",
+      "topic": "git",
+      "type": "single",
+      "prompt": "What does this command do?",
+      "options": [
+        "Rejects the pull request",
+        "Deletes the whole repository",
+        "Creates a new pull request",
+        "Merges the PR as one commit, deletes the branch"
+      ],
+      "answer": 3,
+      "code": "gh pr merge --squash --delete-branch",
+      "explanation": "Squash combines the PR's commits into one; --delete-branch removes the feature branch.",
+      "source": "Week 3 Lecture 1 · 'Creating a Pull Request via Terminal'"
+    },
+    {
+      "id": "w3-numeric-chmod-mode-gives-rw",
+      "topic": "terminal",
+      "type": "input",
+      "prompt": "Which numeric `chmod` mode gives `rw-r--r--`?",
+      "accept": [
+        "644"
+      ],
+      "placeholder": "e.g. 755",
+      "prefix": "chmod",
+      "explanation": "Owner rw- = 4+2 = 6, group r-- = 4, others r-- = 4 → 644. Common for regular files.",
+      "source": "Week 2 Lecture 3 · 'chmod'"
+    },
+    {
+      "id": "w3-type-command-that-prints-current",
+      "topic": "terminal",
+      "type": "input",
+      "prompt": "Type the command that prints your current path (macOS/Linux).",
+      "accept": [
+        "pwd"
+      ],
+      "prefix": "$",
+      "explanation": "`pwd` = print working directory. In PowerShell: Get-Location.",
+      "source": "Week 3 Tutorial Terminal · Activity 1"
+    },
+    {
+      "id": "w3-count-number-lines-student-txt",
+      "topic": "terminal",
+      "type": "input",
+      "prompt": "Count the number of lines in student.txt.",
+      "accept": [
+        "wc -l student.txt"
+      ],
+      "prefix": "$",
+      "explanation": "`wc -l` counts lines. The original student.txt has 3.",
+      "source": "Week 3 Tutorial Terminal · Activity 6"
+    },
+    {
+      "id": "w3-put-daily-git-workflow-from",
+      "topic": "git",
+      "type": "order",
+      "prompt": "Put the daily Git workflow from the lecture in order.",
+      "items": [
+        "Pull the latest changes",
+        "Make your changes",
+        "Check them (git status, git diff)",
+        "Stage them (git add)",
+        "Commit",
+        "Push"
+      ],
+      "explanation": "Always pull first and review before you commit. Pull before push avoids most conflicts.",
+      "source": "Week 3 Lecture 1 · 'Step by step of collaboration workflows'"
+    },
+    {
+      "id": "w3-project-at-v1-4-2",
+      "topic": "git",
+      "type": "input",
+      "prompt": "Your project is at v1.4.2. You add a new, backward-compatible feature. What is the new version?",
+      "accept": [
+        "v1.5.0",
+        "1.5.0"
+      ],
+      "placeholder": "e.g. v2.0.0",
+      "explanation": "A new feature bumps MINOR and resets PATCH: v1.4.2 → v1.5.0. A breaking change would bump MAJOR.",
+      "source": "Week 3 Lecture 1 · 'Tags and Releases'"
+    }
+  ]
+}

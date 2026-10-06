@@ -1,0 +1,342 @@
+{
+  "week": 4,
+  "title": "Git in practice & architecture styles",
+  "questions": [
+    {
+      "id": "w4-appears-folder-after-git-init",
+      "topic": "git",
+      "type": "single",
+      "prompt": "What appears in your folder after `git init`?",
+      "options": [
+        "A .gitignore file",
+        "A new repo on GitHub",
+        "A hidden .git folder",
+        "A README.md file"
+      ],
+      "answer": 2,
+      "explanation": "git init creates the hidden .git folder that stores all version-control information.",
+      "source": "Tutorial 2 Week 4 Git · Activity 2"
+    },
+    {
+      "id": "w4-output-git-branch-asterisk-show",
+      "topic": "git",
+      "type": "single",
+      "prompt": "In the output of `git branch`, what does the asterisk `*` show?",
+      "options": [
+        "Remote-only branches",
+        "Branches with conflicts",
+        "The branch you are currently on",
+        "The newest branch"
+      ],
+      "answer": 2,
+      "explanation": "The * marks the current branch.",
+      "source": "Tutorial 2 Week 4 Git · Activity 4"
+    },
+    {
+      "id": "w4-git-push-u-origin-main",
+      "topic": "git",
+      "type": "single",
+      "prompt": "In `git push -u origin main`, what is `origin`?",
+      "options": [
+        "The main branch",
+        "Your local folder",
+        "The default name of the remote repository",
+        "The first commit"
+      ],
+      "answer": 2,
+      "explanation": "origin is the name given to the remote with  git remote add origin <url>.",
+      "source": "Tutorial 2 Week 4 Git · Activity 6"
+    },
+    {
+      "id": "w4-file-should-go-into-gitignore",
+      "topic": "git",
+      "type": "single",
+      "prompt": "Which file should go into `.gitignore`?",
+      "options": [
+        ".env (passwords / secrets)",
+        "main.py",
+        "Dockerfile",
+        "README.md"
+      ],
+      "answer": 0,
+      "explanation": ".gitignore keeps secrets, dependencies and temporary files (.env, node_modules/, __pycache__/) out of Git.",
+      "source": "Tutorial 2 Week 4 Git · Activity 8"
+    },
+    {
+      "id": "w4-committed-on-wrong-branch-command",
+      "topic": "git",
+      "type": "single",
+      "prompt": "You committed on the wrong branch. Which command undoes that last commit (tutorial fix)?",
+      "options": [
+        "git clone",
+        "git init",
+        "git remote -v",
+        "git reset HEAD~1"
+      ],
+      "answer": 3,
+      "codeOptions": true,
+      "explanation": "git reset HEAD~1 undoes the last commit (changes stay in your working dir); then switch branch and commit again.",
+      "source": "Tutorial 2 Week 4 Git · Troubleshooting"
+    },
+    {
+      "id": "w4-available-24-7-and-short",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "'Available 24/7' and 'short response latency' are examples of…",
+      "options": [
+        "Non-functional requirements",
+        "Functional requirements",
+        "Plug-ins",
+        "Restrictions"
+      ],
+      "answer": 0,
+      "explanation": "Functional = what the system should DO; non-functional = how it should BEHAVE (reliability, latency, scalability).",
+      "source": "Week 4 Lecture 1 · 'Software architecture'"
+    },
+    {
+      "id": "w4-n-layer-vs-n-tier",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "N-layer vs N-tier: what does N-TIER describe?",
+      "options": [
+        "Number of Git branches",
+        "Physical separation (separate machines)",
+        "Number of developers",
+        "Logical separation inside the code"
+      ],
+      "answer": 1,
+      "explanation": "N-layer = logical separation (presentation, business, data access). N-tier = physical (client, server, database).",
+      "source": "Week 4 Lecture 1 · 'Layered and/or n-tier'"
+    },
+    {
+      "id": "w4-layered-architecture-any-layer-may",
+      "topic": "architecture",
+      "type": "truefalse",
+      "prompt": "In a layered architecture any layer may talk directly to any other layer.",
+      "answer": false,
+      "explanation": "Each layer only communicates with the layer directly beneath it - clean separation of concerns.",
+      "source": "Week 4 Lecture 1 · 'Layered and/or n-tier'"
+    },
+    {
+      "id": "w4-plug-ins-run-same-process",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Plug-ins run in the SAME process as a minimal core. Which architecture?",
+      "options": [
+        "Microkernel (plug-in)",
+        "Microservices",
+        "Peer-to-peer",
+        "Broker"
+      ],
+      "answer": 0,
+      "explanation": "Microkernel: core + self-contained plug-ins in one application process (like a phone OS + apps).",
+      "source": "Week 4 Lecture 1 · 'Microkernel and plug-in'"
+    },
+    {
+      "id": "w4-producers-publish-events-without-knowing",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Producers publish events without knowing who reads them; consumers subscribe. Pattern?",
+      "options": [
+        "Event-bus",
+        "Master-slave",
+        "Client-server",
+        "Layered"
+      ],
+      "answer": 0,
+      "explanation": "Event-bus: a central highway; producers broadcast, subscribers react asynchronously.",
+      "source": "Week 4 Lecture 1 · 'Event-bus'"
+    },
+    {
+      "id": "w4-data-streams-through-transforming-steps",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Data streams through transforming steps connected by channels. Pattern?",
+      "options": [
+        "Broker",
+        "MVC",
+        "Blackboard",
+        "Pipe-filter"
+      ],
+      "answer": 3,
+      "explanation": "Filters transform the data; pipes pass it from one filter to the next.",
+      "source": "Week 4 Lecture 1 · 'Pipe-filter'"
+    },
+    {
+      "id": "w4-like-stock-market-buyers-and",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Like a stock market, buyers and sellers never interact directly. Pattern?",
+      "options": [
+        "Peer-to-peer",
+        "MVC",
+        "Blackboard",
+        "Broker"
+      ],
+      "answer": 3,
+      "explanation": "A central broker coordinates communication and forwards requests to the right server.",
+      "source": "Week 4 Lecture 1 · 'Broker architecture'"
+    },
+    {
+      "id": "w4-decentralized-network-every-node-both",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Decentralized network, every node is both client and server, no coordinator. Pattern?",
+      "options": [
+        "Master-slave",
+        "Peer-to-peer",
+        "Broker",
+        "Client-server"
+      ],
+      "answer": 1,
+      "explanation": "P2P: peers are equals, no central coordinator.",
+      "source": "Week 4 Lecture 1 · 'Peer-to-peer'"
+    },
+    {
+      "id": "w4-mvc-part-intercepts-user-input",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "In MVC, which part intercepts user input and updates the model and the view?",
+      "options": [
+        "View",
+        "Database",
+        "Model",
+        "Controller"
+      ],
+      "answer": 3,
+      "explanation": "Model = data & business logic, View = display, Controller = handles input.",
+      "source": "Week 4 Lecture 1 · 'Model-view-controller'"
+    },
+    {
+      "id": "w4-mysql-replication-and-apache-hadoop",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "MySQL replication and Apache Hadoop are examples of which pattern?",
+      "options": [
+        "Event-bus",
+        "Interpreter",
+        "Blackboard",
+        "Master-slave"
+      ],
+      "answer": 3,
+      "explanation": "A master distributes work to identical slaves and aggregates results.",
+      "source": "Week 4 Lecture 1 · 'Master-slave'"
+    },
+    {
+      "id": "w4-no-single-algorithm-solves-it",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "No single algorithm solves it (AI); shared global memory + knowledge sources. Pattern?",
+      "options": [
+        "Layered",
+        "Client-server",
+        "Pipe-filter",
+        "Blackboard"
+      ],
+      "answer": 3,
+      "explanation": "Blackboard = central memory, specialised knowledge sources, control component.",
+      "source": "Week 4 Lecture 1 · 'Blackboard'"
+    },
+    {
+      "id": "w4-amazon-order-placed-automatically-triggers",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Amazon: 'Order Placed' automatically triggers a confirmation email. Which style?",
+      "options": [
+        "Layered",
+        "Blackboard",
+        "Interpreter",
+        "Event-driven"
+      ],
+      "answer": 3,
+      "explanation": "An action produces an event that triggers reactions - event-driven architecture.",
+      "source": "Week 4 Lecture 1 · Amazon example"
+    },
+    {
+      "id": "w4-key-difference-between-microkernel-and",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Key difference between microkernel and microservices?",
+      "options": [
+        "Microservices run in one process",
+        "Plug-ins share one process; microservices run over a network",
+        "There is no difference",
+        "Microkernel has no core system"
+      ],
+      "answer": 1,
+      "explanation": "Plug-ins run inside the same application process; microservices are distributed across servers.",
+      "source": "Week 4 Lecture 1 · 'Microkernel' (Different from…)"
+    },
+    {
+      "id": "w4-typical-downside-layered-n-tier",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "A typical DOWNSIDE of a layered (n-tier) architecture?",
+      "options": [
+        "It can't be used for web apps",
+        "Layers can't use different technologies",
+        "No separation of concerns",
+        "Extra latency from communication between layers"
+      ],
+      "answer": 3,
+      "explanation": "Multiple layers can introduce latency due to communication between them.",
+      "source": "Week 4 Lecture 1 · 'Layered and/or n-tier'"
+    },
+    {
+      "id": "w4-interpreter-architecture-structure-interpreter-walk",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Interpreter architecture: what structure does the interpreter walk to execute code?",
+      "options": [
+        "A Docker image",
+        "A merge conflict",
+        "An event bus",
+        "An abstract syntax tree (AST)"
+      ],
+      "answer": 3,
+      "explanation": "The interpreter walks the abstract syntax tree representation of the language.",
+      "source": "Week 4 Lecture 1 · 'Interpreter'"
+    },
+    {
+      "id": "w4-creating-pull-request-from-terminal",
+      "topic": "git",
+      "type": "order",
+      "prompt": "Creating a pull request from the terminal: put the steps in order.",
+      "items": [
+        "git checkout -b feature/update-readme",
+        "git add student.txt && git commit -m \"Update\"",
+        "git push origin feature/update-readme",
+        "gh pr create --base main --head feature/update-readme",
+        "gh pr merge --squash --delete-branch"
+      ],
+      "codeItems": true,
+      "explanation": "Branch → commit → push the branch → open the PR → merge after approval (then sync main with git pull).",
+      "source": "Week 3 Lecture 1 · 'Creating a Pull Request via Terminal'"
+    },
+    {
+      "id": "w4-create-new-branch-feature-login",
+      "topic": "git",
+      "type": "input",
+      "prompt": "Create a new branch `feature/login` and switch to it, in one command.",
+      "accept": [
+        "git checkout -b feature/login",
+        "git switch -c feature/login"
+      ],
+      "prefix": "$",
+      "explanation": "`git checkout -b` creates and switches in one step (`git switch -c` does the same in newer Git).",
+      "source": "Week 3 Lecture 1 · 'Creating a Pull Request via Terminal'"
+    },
+    {
+      "id": "w4-connect-local-repo-remote-https",
+      "topic": "git",
+      "type": "input",
+      "prompt": "Connect your local repo to the remote https://github.com/me/repo.git under the name origin.",
+      "accept": [
+        "git remote add origin https://github.com/me/repo.git"
+      ],
+      "prefix": "$",
+      "explanation": "`git remote add <name> <url>`. Check it afterwards with `git remote -v`.",
+      "source": "Tutorial 2 Week 4 Git · Activity 6"
+    }
+  ]
+}

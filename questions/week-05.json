@@ -1,0 +1,377 @@
+{
+  "week": 5,
+  "title": "Architectures in practice & containers",
+  "questions": [
+    {
+      "id": "w5-one-system-e-g-amazon",
+      "topic": "architecture",
+      "type": "truefalse",
+      "prompt": "One system (e.g. Amazon) can combine several architectural patterns.",
+      "answer": true,
+      "explanation": "Amazon uses microservices (pricing, inventory, shipping) AND event-driven flows (Order Placed → email).",
+      "source": "Week 4 Lecture 1 · 'One system can have one or many patterns'"
+    },
+    {
+      "id": "w5-group-1-stack-overflow-mvc",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 1 (Stack Overflow): which MVC part covers business logic AND data access?",
+      "options": [
+        "Controller",
+        "View",
+        "Router",
+        "Model"
+      ],
+      "answer": 3,
+      "explanation": "Controller + View = presentation layer; Model = business logic + data access layers.",
+      "source": "Group 1 presentation · 'Where MVC fits inside the N-Layers'"
+    },
+    {
+      "id": "w5-stack-overflow-runs-redis-as",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Stack Overflow runs Redis as a separate tier. What is it used for?",
+      "options": [
+        "Caching hot data",
+        "Video streaming",
+        "Storing source code",
+        "Full-text search"
+      ],
+      "answer": 0,
+      "explanation": "Redis = distributed cache; Elasticsearch = full-text search; SQL Server = data tier.",
+      "source": "Group 1 presentation · 'The Real Production Stack'"
+    },
+    {
+      "id": "w5-group-2-audio-workstation-noise",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 2 (audio workstation): Noise Reduction → EQ → Reverb plug-ins act as…",
+      "options": [
+        "Filters in a pipeline",
+        "Brokers",
+        "Views",
+        "Masters"
+      ],
+      "answer": 0,
+      "explanation": "Microkernel loads the plug-ins; each plug-in is a filter, connected by pipes.",
+      "source": "Group 2 presentation · Microkernel & Plug-in + Pipe-Filter"
+    },
+    {
+      "id": "w5-group-3-pattern-answers-who",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 3: which pattern answers 'Who needs to know that this happened?'",
+      "options": [
+        "Broker",
+        "Controller-Worker",
+        "Event Bus",
+        "MVC"
+      ],
+      "answer": 2,
+      "explanation": "Broker: who should handle this request? Event Bus: who needs to know? Controller-Worker: how to divide the work?",
+      "source": "Group 3 presentation · 'How can these patterns work together?'"
+    },
+    {
+      "id": "w5-group-3-tool-uber-use",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 3: which tool does Uber use as its core message bus?",
+      "options": [
+        "Apache Kafka",
+        "Git",
+        "Redis",
+        "Docker Hub"
+      ],
+      "answer": 0,
+      "explanation": "Uber uses Apache Kafka as a core message bus for rider and driver event data.",
+      "source": "Group 3 presentation · 'Best real-world use case: Uber'"
+    },
+    {
+      "id": "w5-group-4-why-combine-interpreter",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 4: why combine an Interpreter with a Blackboard?",
+      "options": [
+        "It removes the shared memory",
+        "Experts can change rules without recompiling",
+        "It makes the system run faster",
+        "It replaces all knowledge sources"
+      ],
+      "answer": 1,
+      "explanation": "The interpreter reads human-written rules on the fly, so non-programmers can change behaviour without recompiling.",
+      "source": "Group 4 presentation · 'Combining the Blackboard & Interpreter'"
+    },
+    {
+      "id": "w5-netflix-group-central-component-that",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Netflix group: a central component that controls the order of service calls is…",
+      "options": [
+        "Pipe-filter",
+        "Monolith",
+        "Orchestration",
+        "Peer-to-peer"
+      ],
+      "answer": 2,
+      "explanation": "Orchestration: a central component coordinates services and controls the order of operations.",
+      "source": "Netflix group presentation · 'Orchestration Architecture'"
+    },
+    {
+      "id": "w5-group-7-basecamp-well-known",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 7: Basecamp is a well-known example of…",
+      "options": [
+        "Blackboard",
+        "A monolith (deployed as one unit)",
+        "Microservices",
+        "Peer-to-peer"
+      ],
+      "answer": 1,
+      "explanation": "Basecamp ('The Majestic Monolith') is one Ruby on Rails (MVC) application deployed as a single unit.",
+      "source": "Group 7 presentation · 'The Monolithic Advantage'"
+    },
+    {
+      "id": "w5-classic-problem-containers-solve",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which classic problem do containers solve?",
+      "options": [
+        "Merge conflicts in Git",
+        "Slow internet connections",
+        "Writing unit tests",
+        "'It works on my machine…' but not on others"
+      ],
+      "answer": 3,
+      "explanation": "A container packages code + dependencies, so it runs the same everywhere.",
+      "source": "Week 5 Lecture · 'It was working on my machine…'"
+    },
+    {
+      "id": "w5-chain-correct",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which chain is correct?",
+      "options": [
+        "Dockerfile → container → image",
+        "Dockerfile → image → container",
+        "Image → Dockerfile → container",
+        "Container → image → Dockerfile"
+      ],
+      "answer": 1,
+      "explanation": "docker build turns a Dockerfile into an image; docker run turns an image into a container.",
+      "source": "Week 5 Lecture · 'Key concepts'"
+    },
+    {
+      "id": "w5-cookie-analogy-docker-image-container",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Cookie analogy: the Docker IMAGE is the ___, the CONTAINER is the ___",
+      "options": [
+        "Cookie; recipe",
+        "Recipe; cookie",
+        "Recipe; oven",
+        "Oven; cookie"
+      ],
+      "answer": 1,
+      "explanation": "Image = recipe (blueprint). Container = cookie made from it - one recipe, many cookies.",
+      "source": "Week 5 Lecture · 'What is a Docker image?'"
+    },
+    {
+      "id": "w5-containers-vs-virtual-machines-containers",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Containers vs virtual machines - containers…",
+      "options": [
+        "Share the host's kernel",
+        "Include a full guest OS",
+        "Need one hypervisor per app",
+        "Always start slower"
+      ],
+      "answer": 0,
+      "explanation": "A VM copies a whole OS; containers isolate at the process level and share the host kernel.",
+      "source": "Week 5 Lecture · 'Containers versus Virtual Machines'"
+    },
+    {
+      "id": "w5-port-app-listen-on-inside",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which port does the app listen on inside the container?",
+      "options": [
+        "Both 80 and 8080",
+        "8080",
+        "Neither",
+        "80"
+      ],
+      "answer": 1,
+      "code": "docker run -p 80:8080 my-app",
+      "explanation": "-p HostPort:ContainerPort → 80 on your machine, 8080 inside the container.",
+      "source": "Week 5 Lecture · 'Docker run'"
+    },
+    {
+      "id": "w5-server-that-stores-and-distributes",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "A server that stores and distributes Docker images is called a…",
+      "options": [
+        "Daemon",
+        "Registry",
+        "Dockerfile",
+        "Container"
+      ],
+      "answer": 1,
+      "explanation": "Registry (e.g. Docker Hub) = where images live when they are not on your machine.",
+      "source": "Week 5 Lecture · 'Docker architecture'"
+    },
+    {
+      "id": "w5-run-docker-run-but-image",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "You run `docker run` but the image doesn't exist locally. What does Docker do?",
+      "options": [
+        "Builds it from source code",
+        "Starts an empty container",
+        "Pulls it from Docker Hub",
+        "Fails immediately"
+      ],
+      "answer": 2,
+      "explanation": "Engine process: 1) check local image, 2) if not found, pull from Docker Hub, 3) create container…",
+      "source": "Week 5 Lecture · 'Docker run' (engine process)"
+    },
+    {
+      "id": "w5-group-1-stack-overflow-s",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 1: in Stack Overflow's design, which layer is NOT covered by MVC?",
+      "options": [
+        "Business logic layer",
+        "Data access layer",
+        "Database layer",
+        "Presentation layer"
+      ],
+      "answer": 2,
+      "explanation": "Controller+View = presentation; Model = business + data access; database layer is outside MVC.",
+      "source": "Group 1 presentation · 'Where MVC fits inside the N-Layers'"
+    },
+    {
+      "id": "w5-group-3-big-risk-broker",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 3: a big risk of the broker architecture is…",
+      "options": [
+        "It cannot scale at all",
+        "Components are too tightly coupled",
+        "It has no central component",
+        "The broker is a single point of failure"
+      ],
+      "answer": 3,
+      "explanation": "If the central broker fails, communication stops (unless high-availability clustering is used).",
+      "source": "Group 3 presentation · 'Broker: Pros and Cons'"
+    },
+    {
+      "id": "w5-group-7-why-basecamp-stay",
+      "topic": "architecture",
+      "type": "single",
+      "prompt": "Group 7: why does Basecamp stay monolithic?",
+      "options": [
+        "Rails cannot do microservices",
+        "Microservices are not allowed",
+        "It has very few users",
+        "Simpler development and operations for the team"
+      ],
+      "answer": 3,
+      "explanation": "One app and one database keep development simple; microservices would add complexity without a clear need.",
+      "source": "Group 7 presentation · 'Why Monolithic?'"
+    },
+    {
+      "id": "w5-containers-isolate-applications-at-level",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Containers isolate applications at the ___ level, VMs at the OS level.",
+      "options": [
+        "Hardware",
+        "Process",
+        "Git",
+        "Browser"
+      ],
+      "answer": 1,
+      "explanation": "Containers isolate at the process level and share the host kernel.",
+      "source": "Week 5 Lecture · 'Containers versus Virtual Machines'"
+    },
+    {
+      "id": "w5-when-docker-starts-container-cgroups",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "When Docker starts a container, what do cgroups do?",
+      "options": [
+        "Limit resources such as CPU and memory",
+        "Build the Dockerfile",
+        "Store images in a registry",
+        "Map host ports to container ports"
+      ],
+      "answer": 0,
+      "explanation": "Namespaces isolate what a container can SEE; cgroups limit what it can USE.",
+      "source": "Week 5 Lecture · 'Docker run' / Docker Practice Session 1"
+    },
+    {
+      "id": "w5-rm-here",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "What does `--rm` do here?",
+      "options": [
+        "Removes the container after it exits",
+        "Restarts the container on crash",
+        "Runs as root",
+        "Removes the image"
+      ],
+      "answer": 0,
+      "code": "docker run --rm expo 2 10",
+      "explanation": "--rm cleans up the container automatically when it stops. (docker rmi removes images.)",
+      "source": "Week 5 Lecture · 'Exponential example'"
+    },
+    {
+      "id": "w5-docker-engine-after-docker-run",
+      "topic": "containers",
+      "type": "order",
+      "prompt": "What does the Docker Engine do after `docker run`? Put the steps in order.",
+      "items": [
+        "Check if the image exists locally",
+        "Pull it from Docker Hub if missing",
+        "Create the container from the image",
+        "Set up isolated namespaces",
+        "Apply resource limits (cgroups)",
+        "Map the ports",
+        "Start the application process"
+      ],
+      "explanation": "Image first (local, else pull), then create and isolate the container, limit it, wire the ports and start the process.",
+      "source": "Week 5 Lecture · 'Docker run' (engine process)"
+    },
+    {
+      "id": "w5-group-1-stack-overflow-put",
+      "topic": "architecture",
+      "type": "order",
+      "prompt": "Group 1 (Stack Overflow): put the steps of an upvote click in order.",
+      "items": [
+        "Controller receives the click",
+        "Model applies the business rules",
+        "Model builds the data query",
+        "Database stores the update",
+        "View shows the new vote count"
+      ],
+      "explanation": "Presentation (Controller) → Business logic (Model) → Data access (Model) → Database → back up to the View.",
+      "source": "Group 1 presentation · 'The Upvote Click'"
+    },
+    {
+      "id": "w5-map-port-3000-on-laptop",
+      "topic": "containers",
+      "type": "input",
+      "prompt": "Map port 3000 on your laptop to port 80 inside the container. What goes after `-p`?",
+      "accept": [
+        "3000:80"
+      ],
+      "prefix": "docker run -p",
+      "suffix": "my-app",
+      "explanation": "The rule is HostPort:ContainerPort, so 3000:80.",
+      "source": "Week 5 Lecture · 'Docker run'"
+    }
+  ]
+}

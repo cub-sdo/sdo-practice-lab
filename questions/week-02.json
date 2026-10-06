@@ -1,0 +1,317 @@
+{
+  "week": 2,
+  "title": "DevOps roles, SDLC & the computer",
+  "questions": [
+    {
+      "id": "w2-role-asks-how-we-keep",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Which role asks: 'How do we keep the system running when things go wrong?'",
+      "options": [
+        "MLOps Engineer",
+        "Cloud Architect",
+        "Site Reliability Engineer",
+        "Platform Engineer"
+      ],
+      "answer": 2,
+      "explanation": "SRE = uptime, incident response, reliability targets.",
+      "source": "Week 2 Tutorial 1 · 'Putting the roles together'"
+    },
+    {
+      "id": "w2-who-builds-internal-tools-so",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Who builds internal tools so developers can deploy their apps self-service?",
+      "options": [
+        "DevSecOps Engineer",
+        "Site Reliability Engineer",
+        "Platform Engineer",
+        "Infrastructure Engineer"
+      ],
+      "answer": 2,
+      "explanation": "Platform Engineers build the internal tools and platforms other developers use.",
+      "source": "Week 2 Tutorial 1 · 'Platform Engineer'"
+    },
+    {
+      "id": "w2-building-security-from-beginning-instead",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Building security in from the beginning, instead of checking it at the end, is the job of a…",
+      "options": [
+        "Cloud Engineer",
+        "CI/CD Engineer",
+        "MLOps Engineer",
+        "DevSecOps Engineer"
+      ],
+      "answer": 3,
+      "explanation": "DevSecOps: test for vulnerabilities, safe libraries, licensing, sensitive data - security from the start.",
+      "source": "Week 2 Tutorial 1 · 'DevSecOps Engineer'"
+    },
+    {
+      "id": "w2-staging-environment",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "A staging environment is…",
+      "options": [
+        "An exact copy of production used to test before release",
+        "The Git staging area",
+        "The live system that users access",
+        "A developer's personal laptop"
+      ],
+      "answer": 0,
+      "explanation": "Staging = exact copy of the live production system used to debug/test before releasing. (Not the Git staging area!)",
+      "source": "Week 2 Tutorial 1 · 'Important principles for DevOps'"
+    },
+    {
+      "id": "w2-cap-theorem-how-many-consistency",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "CAP theorem: how many of Consistency, Availability, Partition tolerance can you fully optimise at once?",
+      "options": [
+        "At most two",
+        "None",
+        "All three",
+        "Only one"
+      ],
+      "answer": 0,
+      "explanation": "You can only optimise two of the three dimensions; one is compromised - a trade-off decision.",
+      "source": "Week 2 Tutorial 1 · 'CAP Theorem'"
+    },
+    {
+      "id": "w2-system-grows-well-with-number",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "'The system grows well with the number of users' describes…",
+      "options": [
+        "Reliability",
+        "Scalability",
+        "Maintainability",
+        "Efficiency"
+      ],
+      "answer": 1,
+      "explanation": "Good design: scalability (users), maintainability (developers), efficiency (resources), reliability (protection).",
+      "source": "Week 2 Tutorial 1 · 'What is a good design?'"
+    },
+    {
+      "id": "w2-sdlc-phase-delivers-software-design",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Which SDLC phase delivers the Software Design Document (SDD)?",
+      "options": [
+        "Testing",
+        "Design",
+        "Analysis",
+        "Planning"
+      ],
+      "answer": 1,
+      "explanation": "Design phase: define project architecture → deliverable is the SDD.",
+      "source": "Week 2 Lecture 2 · SDLC phase table"
+    },
+    {
+      "id": "w2-defining-functional-and-non-functional",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Defining functional and non-functional requirements happens in which SDLC phase?",
+      "options": [
+        "Maintenance",
+        "Coding",
+        "Deployment",
+        "Analysis"
+      ],
+      "answer": 3,
+      "explanation": "Analysis: detailed expectations from stakeholders, functional & non-functional requirements.",
+      "source": "Week 2 Lecture 2 · 'Analysis'"
+    },
+    {
+      "id": "w2-health-record-system-migrating-old",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Health record system: migrating old patient data into the new system is part of…",
+      "options": [
+        "Deployment",
+        "Testing",
+        "Design",
+        "Planning"
+      ],
+      "answer": 0,
+      "explanation": "Deployment: deploy and test live, install/configure for users, migrate existing data.",
+      "source": "Week 2 Lecture 2 · 'Deployment'"
+    },
+    {
+      "id": "w2-waterfall-model-each-phase-must",
+      "topic": "devops",
+      "type": "truefalse",
+      "prompt": "In the Waterfall model each phase must finish before the next one begins.",
+      "answer": true,
+      "explanation": "Waterfall is linear and sequential; changes later are costly.",
+      "source": "Week 2 Lecture 2 · 'Waterfall Model'"
+    },
+    {
+      "id": "w2-tax-filing-software-rules-are",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Tax-filing software; rules are fixed by law and won't change. Best SDLC model?",
+      "options": [
+        "Agile",
+        "Waterfall",
+        "Iterative/Incremental",
+        "Spiral"
+      ],
+      "answer": 1,
+      "explanation": "Stable, well-defined requirements up front → Waterfall.",
+      "source": "Week 2 Lecture 2 · 'Which model to use?'"
+    },
+    {
+      "id": "w2-insulin-pump-firmware-every-dev",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Insulin pump firmware: every dev phase needs a matching rigorous test phase. Best model?",
+      "options": [
+        "Spiral",
+        "Agile",
+        "Waterfall",
+        "V-Model"
+      ],
+      "answer": 3,
+      "explanation": "The V-Model pairs each development phase with a verification/testing phase - safety first.",
+      "source": "Week 2 Lecture 2 · 'Which model to use?'"
+    },
+    {
+      "id": "w2-huge-banking-system-build-prototypes",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Huge banking system: build prototypes and assess risk in every loop. Best model?",
+      "options": [
+        "Agile",
+        "Spiral",
+        "Waterfall",
+        "V-Model"
+      ],
+      "answer": 1,
+      "explanation": "Spiral is risk-driven: planning, risk analysis, prototype, evaluation in each loop.",
+      "source": "Week 2 Lecture 2 · 'Which model to use?'"
+    },
+    {
+      "id": "w2-combination-describes-devops-sdlc-model",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Which combination describes the DevOps SDLC model?",
+      "options": [
+        "Spiral only",
+        "Agile + Iterative + Incremental",
+        "Waterfall + V-Model",
+        "Waterfall + Spiral"
+      ],
+      "answer": 1,
+      "explanation": "DevOps model: Agile + Iterative + Incremental, MVP with continuous improvement, automation.",
+      "source": "Week 2 Lecture 2 · 'DevOps SDLC Model'"
+    },
+    {
+      "id": "w2-memory-loses-its-content-when",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "Which memory loses its content when the power goes off?",
+      "options": [
+        "USB flash drive",
+        "SSD",
+        "HDD",
+        "RAM"
+      ],
+      "answer": 3,
+      "explanation": "RAM is volatile short-term memory; SSD/HDD are non-volatile storage.",
+      "source": "Week 2 Lecture 3 · 'Computer' (RAM)"
+    },
+    {
+      "id": "w2-ssd-vs-hdd-statement-correct",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "SSD vs HDD - which statement is correct?",
+      "options": [
+        "SSD has no moving parts and is faster",
+        "HDD is faster and more expensive",
+        "HDD is volatile memory",
+        "SSD uses spinning magnetic platters"
+      ],
+      "answer": 0,
+      "explanation": "SSD = flash chips, no moving parts, faster, pricier. HDD = spinning magnetic platters, cheaper per GB, slower.",
+      "source": "Week 2 Lecture 3 · 'Computer' (Disk storage)"
+    },
+    {
+      "id": "w2-fixing-bugs-from-incident-reports",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Fixing bugs from incident reports within agreed response times belongs to which SDLC phase?",
+      "options": [
+        "Deployment",
+        "Maintenance",
+        "Testing",
+        "Analysis"
+      ],
+      "answer": 1,
+      "explanation": "Maintenance: fix newly discovered bugs, improve performance, update features, adapt to new environments.",
+      "source": "Week 2 Lecture 2 · 'Maintenance'"
+    },
+    {
+      "id": "w2-e-commerce-ship-browsing-checkout",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "E-commerce: ship browsing+checkout, then reviews, then recommendations. Best model?",
+      "options": [
+        "Spiral",
+        "V-Model",
+        "Iterative/Incremental",
+        "Waterfall"
+      ],
+      "answer": 2,
+      "explanation": "Each increment is a complete, working addition to what came before.",
+      "source": "Week 2 Lecture 2 · 'Which model to use?'"
+    },
+    {
+      "id": "w2-google-docs-showing-same-text",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Google Docs showing the same text to everyone at the same time illustrates…",
+      "options": [
+        "Partition tolerance",
+        "Availability",
+        "Scalability",
+        "Consistency"
+      ],
+      "answer": 3,
+      "explanation": "CAP: Consistency = same data at the same time, changes reflected everywhere.",
+      "source": "Week 2 Tutorial 1 · 'CAP Theorem'"
+    },
+    {
+      "id": "w2-role-chooses-public-private-hybrid",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Which role chooses public/private/hybrid cloud and leads on-premise migration?",
+      "options": [
+        "Cloud Architect",
+        "CI/CD Engineer",
+        "MLOps Engineer",
+        "Site Reliability Engineer"
+      ],
+      "answer": 0,
+      "explanation": "Cloud Architect: overall infrastructure, cloud model, migration, compliance, vendor/cost management.",
+      "source": "Week 2 Tutorial 1 · 'Cloud Architect'"
+    },
+    {
+      "id": "w2-put-sdlc-phases-order",
+      "topic": "devops",
+      "type": "order",
+      "prompt": "Put the SDLC phases in order.",
+      "items": [
+        "Planning",
+        "Analysis",
+        "Design",
+        "Coding",
+        "Testing",
+        "Deployment",
+        "Maintenance"
+      ],
+      "explanation": "Planning → Analysis → Design → Coding → Testing → Deployment → Maintenance, then the cycle continues.",
+      "source": "Week 2 Lecture 2 · SDLC phase table"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "foundations",
+    "name": "CS foundations",
+    "about": "Algorithms, bits, complexity, hardware"
+  },
+  {
+    "id": "devops",
+    "name": "DevOps & SDLC",
+    "about": "Roles, principles, life cycle, process models"
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "about": "Shell commands, files, permissions"
+  },
+  {
+    "id": "git",
+    "name": "Git & collaboration",
+    "about": "Commits, branches, remotes, pull requests"
+  },
+  {
+    "id": "architecture",
+    "name": "Software architecture",
+    "about": "Styles, patterns and real systems"
+  },
+  {
+    "id": "containers",
+    "name": "Containers & Docker",
+    "about": "Images, containers, Dockerfiles, docker run"
+  }
+]

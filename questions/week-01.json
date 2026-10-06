@@ -1,0 +1,210 @@
+{
+  "week": 1,
+  "title": "Course kick-off & CS basics",
+  "questions": [
+    {
+      "id": "w1-course-operation-mainly-cover",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "In this course, what does 'Operation' mainly cover?",
+      "options": [
+        "Writing documentation only",
+        "Coding, reviewing and debugging",
+        "Automation, infrastructure, monitoring, deployment",
+        "Designing user interfaces"
+      ],
+      "answer": 2,
+      "explanation": "Development = code, review, debug, refactor, document. Operation = automation, infrastructure, monitoring, deployment.",
+      "source": "Week 1 Lecture 1 · 'Software Development & Operation'"
+    },
+    {
+      "id": "w1-these-not-property-good-algorithm",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "Which of these is NOT a property of a good algorithm?",
+      "options": [
+        "Clear and not ambiguous",
+        "Finite",
+        "Well-defined inputs and outputs",
+        "Tied to one programming language"
+      ],
+      "answer": 3,
+      "explanation": "A good algorithm is clear, has defined inputs/outputs, is feasible, finite and language independent.",
+      "source": "Week 1 Lecture 1 · 'Algorithm'"
+    },
+    {
+      "id": "w1-algorithm-designed-for-humans-understand",
+      "topic": "foundations",
+      "type": "truefalse",
+      "prompt": "An algorithm is designed for humans to understand, a program for computers to execute.",
+      "answer": true,
+      "explanation": "Algorithm = step-by-step instructions (a recipe); program = the functional element a computer runs (the cake).",
+      "source": "Week 1 Lecture 1 · 'Algorithms versus Programs'"
+    },
+    {
+      "id": "w1-2-bits-can-represent-4",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "2 bits can represent 4 values. How many values can 3 bits represent?",
+      "options": [
+        "3",
+        "8",
+        "9",
+        "6"
+      ],
+      "answer": 1,
+      "explanation": "n bits represent 2^n values: 2^3 = 8.",
+      "source": "Week 1 Lecture 1 · 'Computers'"
+    },
+    {
+      "id": "w1-1-byte-equal-how-many",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "1 byte is equal to how many bits?",
+      "options": [
+        "16",
+        "4",
+        "8",
+        "2"
+      ],
+      "answer": 2,
+      "explanation": "One byte = 8 bits.",
+      "source": "Week 1 Lecture 1 · 'Computers'"
+    },
+    {
+      "id": "w1-time-complexity-loop",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "What is the time complexity of this loop?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(1)",
+        "O(n²)"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "code": "for a in range(n):\n    print(\"Hello\")",
+      "explanation": "The loop body runs n times, so it grows linearly with n.",
+      "source": "Week 1 Lecture 1 · 'Time Complexity'"
+    },
+    {
+      "id": "w1-halving-problem-at-every-step",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "Halving the problem at every step (e.g. binary search) typically gives which complexity?",
+      "options": [
+        "O(n)",
+        "O(n²)",
+        "O(log n)",
+        "O(1)"
+      ],
+      "answer": 2,
+      "codeOptions": true,
+      "explanation": "Divide-and-conquer that halves the input each step takes log n steps.",
+      "source": "Week 1 Lecture 1 · 'Time Complexity'"
+    },
+    {
+      "id": "w1-algorithm-strategy-tries-all-possible",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "Which algorithm strategy tries ALL possible options?",
+      "options": [
+        "Greedy algorithm",
+        "Divide and conquer",
+        "Dynamic programming",
+        "Brute force"
+      ],
+      "answer": 3,
+      "explanation": "Brute force = try all the options. Greedy picks the locally best option.",
+      "source": "Week 1 Lecture 1 · 'Algorithm' (strategies)"
+    },
+    {
+      "id": "w1-solving-sudoku-by-placing-one",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "Solving Sudoku by placing one number at a time and undoing dead ends is…",
+      "options": [
+        "Constant time O(1)",
+        "Backtracking",
+        "Divide and conquer",
+        "Greedy algorithm"
+      ],
+      "answer": 1,
+      "explanation": "Backtracking builds a solution piece by piece and discards partial solutions that fail (Sudoku example on the slide).",
+      "source": "Week 1 Lecture 1 · 'Algorithm' (strategies)"
+    },
+    {
+      "id": "w1-information-compared-raw-data",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "What is 'information' compared to raw data?",
+      "options": [
+        "Raw data in its basic digital form",
+        "Any file larger than 1 MB",
+        "Data that has been processed and has meaning",
+        "Only numbers stored in tables"
+      ],
+      "answer": 2,
+      "explanation": "Information is processed data that carries meaning; raw data is the basic digital form.",
+      "source": "Week 1 Lecture 1 · 'Data Structures'"
+    },
+    {
+      "id": "w1-continuous-integration-new-feature-must",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "Continuous Integration: a new feature must pass which checks?",
+      "options": [
+        "Only a manual code review",
+        "Uploading a Docker image",
+        "Deployment to production",
+        "Build, lint and tests"
+      ],
+      "answer": 3,
+      "explanation": "CI = the new feature passes build, lint (rules) and tests before it is integrated.",
+      "source": "Week 1 Lecture 1 · 'CI/CD'"
+    },
+    {
+      "id": "w1-devops-toolchain-from-lecture-kibana",
+      "topic": "devops",
+      "type": "single",
+      "prompt": "In the DevOps toolchain from the lecture, Kibana is used for…",
+      "options": [
+        "Containerization",
+        "Monitoring and logging",
+        "Version control",
+        "Continuous integration"
+      ],
+      "answer": 1,
+      "explanation": "Monitoring & logging: Kibana visualises data/performance and logs the live system.",
+      "source": "Week 1 Lecture 1 · 'DevOps'"
+    },
+    {
+      "id": "w1-according-course-rules-how-should",
+      "topic": "foundations",
+      "type": "single",
+      "prompt": "According to the course rules, how should you use AI?",
+      "options": [
+        "Only during the final exam",
+        "To generate homework code for you",
+        "Never, not even to ask questions",
+        "As a tutor/reviewer - and double-check what it says"
+      ],
+      "answer": 3,
+      "explanation": "Use AI to review and to understand content, not to generate your work - and always double-check it.",
+      "source": "Week 1 Overview · 'How to use AI?'"
+    },
+    {
+      "id": "w1-how-many-different-values-can",
+      "topic": "foundations",
+      "type": "input",
+      "prompt": "How many different values can 4 bits represent?",
+      "accept": [
+        "16"
+      ],
+      "placeholder": "a number",
+      "explanation": "n bits represent 2^n values: 2^4 = 16.",
+      "source": "Week 1 Lecture 1 · 'Computers'"
+    }
+  ]
+}

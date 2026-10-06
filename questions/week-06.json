@@ -1,0 +1,291 @@
+{
+  "week": 6,
+  "title": "Docker hands-on",
+  "questions": [
+    {
+      "id": "w6-need-gcc-installed-on-laptop",
+      "topic": "containers",
+      "type": "truefalse",
+      "prompt": "You need gcc installed on your laptop to compile C in this tutorial.",
+      "answer": false,
+      "explanation": "gcc lives inside the gcc image - nobody needs it installed locally.",
+      "source": "Docker Practice Session 1 · 'What is Docker, and why do we use it?'"
+    },
+    {
+      "id": "w6-dockerfile-instruction-sets-base-image",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which Dockerfile instruction sets the base image?",
+      "options": [
+        "CMD",
+        "COPY",
+        "FROM",
+        "RUN"
+      ],
+      "answer": 2,
+      "codeOptions": true,
+      "explanation": "FROM gcc:latest - the base image with the C compiler.",
+      "source": "Docker Practice Session 1 · Task 1"
+    },
+    {
+      "id": "w6-instruction-defines-runs-when-container",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which instruction defines what runs when the container STARTS?",
+      "options": [
+        "RUN",
+        "CMD",
+        "WORKDIR",
+        "FROM"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "explanation": "CMD runs at container start; RUN executes during docker build.",
+      "source": "Docker Practice Session 1 · Task 1"
+    },
+    {
+      "id": "w6-when-dockerfile-line-executed",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "When is this Dockerfile line executed?",
+      "options": [
+        "Never - it's a comment",
+        "Only when you git push",
+        "Every time the container starts",
+        "During docker build"
+      ],
+      "answer": 3,
+      "code": "RUN gcc -o hello hello.c",
+      "explanation": "RUN steps execute at build time and their result is saved as an image layer.",
+      "source": "Docker Practice Session 1 · Task 1"
+    },
+    {
+      "id": "w6-change-hello-c-and-rebuild",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "You change hello.c and rebuild. Which step says CACHED?",
+      "options": [
+        "None - every step reruns",
+        "COPY hello.c .",
+        "WORKDIR /app",
+        "RUN gcc -o hello hello.c"
+      ],
+      "answer": 2,
+      "explanation": "Unchanged layers are reused. hello.c changed, so COPY and every step after it rerun; WORKDIR is CACHED.",
+      "source": "Docker Practice Session 1 · Task 1 solution"
+    },
+    {
+      "id": "w6-cmd-hello-builds-fine-but",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "`CMD [\"hello\"]` builds fine but fails when you run the container. Why?",
+      "options": [
+        "/app isn't in PATH - use ./hello",
+        "gcc is missing in the image",
+        "The image is too large",
+        "CMD must be written in lowercase"
+      ],
+      "answer": 0,
+      "explanation": "Without ./ the shell searches PATH for 'hello' and does not find it → 'executable file not found in $PATH'.",
+      "source": "Docker Practice Session 1 · Task 1 notes"
+    },
+    {
+      "id": "w6-docker-run-converter-without-it",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "`docker run converter` (without `-it`) prints \"No input received!\". Why?",
+      "options": [
+        "The image was never built",
+        "The port is not mapped",
+        "No keyboard (stdin) is attached to the container",
+        "C programs cannot read input"
+      ],
+      "answer": 2,
+      "explanation": "-i keeps input connected to your keyboard, -t gives a proper terminal. Without them scanf reads nothing.",
+      "source": "Docker Practice Session 1 · Task 2"
+    },
+    {
+      "id": "w6-with-celsius-100-line-gives",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "With celsius = 100 this line gives 132 instead of 212. Why?",
+      "options": [
+        "Docker rounds all numbers",
+        "float overflow",
+        "scanf read the value 0",
+        "9 / 5 is integer division = 1"
+      ],
+      "answer": 3,
+      "code": "float fahrenheit = celsius * (9 / 5) + 32;",
+      "explanation": "9 / 5 between two ints = 1, so 100*1+32 = 132. Fix: celsius * 9.0 / 5.0 + 32.",
+      "source": "Docker Practice Session 1 · Task 2 solution"
+    },
+    {
+      "id": "w6-url-open-browser",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which URL do you open in the browser?",
+      "options": [
+        "http://8080:8000",
+        "http://localhost:8000",
+        "http://docker:8000",
+        "http://localhost:8080"
+      ],
+      "answer": 1,
+      "codeOptions": true,
+      "code": "docker run -p 8000:8080 webserver",
+      "explanation": "HostPort:ContainerPort - 8000 is on your laptop, 8080 is inside the container.",
+      "source": "Docker Practice Session 1 · Task 3"
+    },
+    {
+      "id": "w6-error-port-already-allocated-quickest",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Error: 'port is already allocated'. Quickest fix?",
+      "options": [
+        "Change the server's port inside server.c",
+        "Use another host port, e.g. -p 8001:8080",
+        "Reinstall Docker Desktop",
+        "Delete the gcc image"
+      ],
+      "answer": 1,
+      "explanation": "Another program already uses host port 8000 - pick a different HOST port and open localhost:8001.",
+      "source": "Docker Practice Session 1 · Task 3 notes"
+    },
+    {
+      "id": "w6-command-also-lists-stopped-containers",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Which command also lists stopped containers?",
+      "options": [
+        "docker ps -a",
+        "docker ps",
+        "docker images",
+        "docker logs"
+      ],
+      "answer": 0,
+      "codeOptions": true,
+      "explanation": "docker ps shows running containers; -a adds the stopped ones (kept until docker rm).",
+      "source": "Docker Practice Session 1 · Task 2 notes"
+    },
+    {
+      "id": "w6-d-here",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "What does `-d` do here?",
+      "options": [
+        "Deletes it after it exits",
+        "Only downloads the image",
+        "Starts debug mode",
+        "Runs the container in the background"
+      ],
+      "answer": 3,
+      "code": "docker run -d -p 8000:8080 webserver",
+      "explanation": "-d = detached. Find it with docker ps, stop it with docker stop <ID>.",
+      "source": "Docker Practice Session 1 · 'Finished early?'"
+    },
+    {
+      "id": "w6-two-webserver-containers-ports-8000",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "Two webserver containers (ports 8000 and 8001): do they share one visitor counter?",
+      "options": [
+        "Yes - same image means shared memory",
+        "No - each container has its own memory",
+        "Yes, if they run on the same laptop",
+        "Only if they use the same port"
+      ],
+      "answer": 1,
+      "explanation": "Each container is isolated - one recipe, two separate cookies.",
+      "source": "Docker Practice Session 1 · 'Finished early?' notes"
+    },
+    {
+      "id": "w6-cannot-connect-docker-daemon-usually",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "'Cannot connect to the Docker daemon' usually means…",
+      "options": [
+        "There is no internet",
+        "The Dockerfile has a typo",
+        "Docker Desktop / the daemon isn't running",
+        "The image name is wrong"
+      ],
+      "answer": 2,
+      "explanation": "Start Docker Desktop (macOS: open -a Docker; Linux: sudo systemctl start docker).",
+      "source": "Docker Practice Session 1 · 'Check your setup'"
+    },
+    {
+      "id": "w6-final-dot-mean",
+      "topic": "containers",
+      "type": "single",
+      "prompt": "What does the final dot mean?",
+      "options": [
+        "Build all images",
+        "End of the command",
+        "Build context = the current folder",
+        "Use the latest tag"
+      ],
+      "answer": 2,
+      "code": "docker build -t hello .",
+      "explanation": "The . is the build context: Docker uses the files in the current folder (Dockerfile, hello.c).",
+      "source": "Week 5 Lecture · 'Build a new Docker image'"
+    },
+    {
+      "id": "w6-put-task-1-dockerfile-order",
+      "topic": "containers",
+      "type": "order",
+      "prompt": "Put the Task 1 Dockerfile in order.",
+      "items": [
+        "FROM gcc:latest",
+        "WORKDIR /app",
+        "COPY hello.c .",
+        "RUN gcc -o hello hello.c",
+        "CMD [\"./hello\"]"
+      ],
+      "codeItems": true,
+      "explanation": "Base image → working directory → copy the source → compile at build time → run at container start.",
+      "source": "Docker Practice Session 1 · Task 1 solution"
+    },
+    {
+      "id": "w6-build-image-tagged-converter-from",
+      "topic": "containers",
+      "type": "input",
+      "prompt": "Build an image tagged `converter` from the current folder.",
+      "accept": [
+        "docker build -t converter .",
+        "docker build --tag converter ."
+      ],
+      "prefix": "$",
+      "explanation": "`-t` names the image; the final `.` is the build context (current folder).",
+      "source": "Docker Practice Session 1 · Task 2"
+    },
+    {
+      "id": "w6-run-converter-image-so-that",
+      "topic": "containers",
+      "type": "input",
+      "prompt": "Run the `converter` image so that you can type into it.",
+      "accept": [
+        "docker run -it converter",
+        "docker run -ti converter",
+        "docker run -i -t converter",
+        "docker run -t -i converter"
+      ],
+      "prefix": "$",
+      "explanation": "`-i` keeps stdin connected to your keyboard, `-t` gives the container a terminal.",
+      "source": "Docker Practice Session 1 · Task 2"
+    },
+    {
+      "id": "w6-list-containers-that-are-running",
+      "topic": "containers",
+      "type": "input",
+      "prompt": "List the containers that are running right now.",
+      "accept": [
+        "docker ps",
+        "docker container ls"
+      ],
+      "prefix": "$",
+      "explanation": "`docker ps` lists running containers; add `-a` to include stopped ones.",
+      "source": "Week 5 Lecture · 'Common commands'"
+    }
+  ]
+}
