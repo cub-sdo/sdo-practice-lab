@@ -44,7 +44,7 @@
         "The first commit"
       ],
       "answer": 2,
-      "explanation": "origin is the name given to the remote with  git remote add origin <url>.",
+      "explanation": "origin is the name given to the remote with `git remote add origin <url>`.",
       "source": "Tutorial 2 Week 4 Git · Activity 6"
     },
     {

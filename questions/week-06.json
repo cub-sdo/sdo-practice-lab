@@ -86,7 +86,7 @@
         "CMD must be written in lowercase"
       ],
       "answer": 0,
-      "explanation": "Without ./ the shell searches PATH for 'hello' and does not find it → 'executable file not found in $PATH'.",
+      "explanation": "Without ./ Docker looks up 'hello' in PATH, and /app is not in PATH → 'executable file not found in $PATH'.",
       "source": "Docker Practice Session 1 · Task 1 notes"
     },
     {
